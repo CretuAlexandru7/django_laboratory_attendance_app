@@ -1,0 +1,68 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'accounts/status.html' %}
+<br>
+<br>
+<brd>
+<div class="row justify-content-around">
+    <div class="col-md-4" >
+        <h5>Students:</h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th/>
+                    <th>Student</th>
+                    <th>Email</th>
+                </tr>
+
+                {% for student in students %}
+                    <tr>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'profile' student.fp_index %}">View</a></td>
+                        <td>{{student.user.first_name}}</td>
+                        <td>{{student.user.email}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h5>Latest classes:</h5>
+        <hr>
+        <div  class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Short Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    {% if request.user.is_staff  %}
+                        <th>Update</th>
+                        <th>Remove</th>
+                    {% endif %}
+                </tr>
+
+                {% for attendance in attendances %}
+                    <tr>
+                        <td><b><i>{{attendance.lecture_title}}</i></b></td>
+                        <td>{{attendance.short_description}}</td>
+                        <td>{{attendance.start_date}}</td>
+                        <td>{{attendance.status}}</td>
+                        {% if request.user.is_staff  %}
+                        <td><a class="btn btn-sm btn-info" href="{% url 'update_attendance' attendance.lecture_title %}">
+                            Update</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_attendance' attendance.lecture_title %}">
+                            Remove</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

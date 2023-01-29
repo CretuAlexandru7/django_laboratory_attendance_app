@@ -1,0 +1,78 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md">
+
+        <div style="margin:30px" class="card card-body" >
+            <h5>Student: {{student.user.first_name}} - {{student.user.last_name}}</h5>
+            <hr>
+            {% if b_show_admin_fields == True %}
+                <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'update_student' student.fp_index %}">
+                    Update Student Info</a>
+                <a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_student' student.fp_index  %}">
+                    Delete Student</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div style="margin:30px" class="card card-body">
+            <h5 style="color:black;">Contact Information:</h5>
+            <hr>
+            <p>FP index: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp {{student.fp_index}}</p>
+            <p>Email:    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   {{student.user.email}}</p>
+            <p>Phone:    &nbsp &nbsp &nbsp &nbsp &nbsp   {{student.phone}}</p>
+        </div>
+    </div>
+
+
+    <div class="col-md">
+        <div style="margin:30px" class="card card-body">
+            <h5>Total Attendances:</h5>
+            <hr>
+            <h1 style="text-align: center; padding: 10px">{{total_attendances}} / {{done_attendances}}</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+<!--<div class="row">-->
+<!--    <div class="col">-->
+<!--        <div style="margin:30px" class="card card-body">-->
+<!--            <form method="get">-->
+<!--                <button class="btn btn-primary" type="submit">Search</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<br>
+<div class="row">
+    <div style="margin:30px" class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Short Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for attendance in attendances %}
+                    <tr>
+                        <td><b><i>{{attendance.lecture_title}}</i></b></td>
+                        <td>{{attendance.short_description}}</td>
+                        <td>{{attendance.start_date}}</td>
+                        <td>{{attendance.status}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

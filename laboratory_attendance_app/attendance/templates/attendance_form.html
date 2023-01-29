@@ -1,0 +1,58 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+    <title>My Form</title>
+</head>
+<body>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center">Update Class-Attendance Info:</h1>
+    <br>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div style="margin:30px" class="col-md">
+                <div class="card card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <th><label for="{{ form.lecture_title.id_for_label }}">Lecture Title:</label></th>
+                            <th><label for="{{ form.short_description.id_for_label }}">Short description:</label></th>
+                            <th><label for="{{ form.status.id_for_label }}">Status:</label></th>
+                            <th><label for="{{ form.start_date.id_for_label }}">Start date:</label></th>
+                            <th><label for="{{ form.end_date.id_for_label }}">End date:</label></th>
+                            <th><label for="{{ form.students.id_for_label }}">Students :</label></th>
+                        </tr>
+
+                        <tr>
+                            <td><b><i>{{ form.lecture_title }}</i></b></td>
+                            <td>{{ form.short_description }}</td>
+                            <td>{{ form.status }}</td>
+                            <td>{{ form.start_date }}</td>
+                            <td>{{ form.end_date }}</td>
+                            <td>{% for student in form.students %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{ student }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+
+                    </table>
+                    <input class="btn btn-info" type="submit" name="Confirm">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

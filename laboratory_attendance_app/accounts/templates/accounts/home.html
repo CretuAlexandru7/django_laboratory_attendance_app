@@ -1,0 +1,84 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+
+    <style>
+            .card1{
+            background-image: url("{% static 'images/pic.png' %}");
+        }
+
+        .card2{
+             background-image: url("{% static 'images/pic-drone.png' %}");
+        }
+
+        .card3{
+            background-image: url("{% static 'images/robot-hand.png' %}");
+        }
+
+        .card4{
+            background-image: url("{% static 'images/cnc-machine.png' %}");
+        }
+
+    </style>
+
+</head>
+<br>
+<br>
+<br>
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <h2> Welcome to the Line Following Car Laboratory! </h2>
+            <br>
+            <h4>Our goal is to push the boundaries of what is currently possible with line following technology,
+                and to ultimately create vehicles that can navigate with precision and accuracy in any environment.</h4>
+            <br>
+
+            <h5>We invite you to explore our website and learn more about our research, projects, and team members.</h5>
+            <br>
+            <br>
+            <h5>Thank you for visiting the Line Following Car Laboratory!</h5>
+        </div>
+
+        <div class="col">
+            <br>
+            <div class="card card1">
+                <h5 style="color: #B3D2DC">
+                    Line Following Car
+                </h5>
+            </div>
+
+            <div class="card card2">
+                <h5 style="color: #B3D2DC">
+                    Following Drone
+                </h5>
+            </div>
+
+            <div class="card card3">
+                <h5 style="color: #B3D2DC">
+                    3 Axis Robot Hand
+                </h5>
+            </div>
+
+            <div class="card card4">
+                <h5 style="color: #000000">
+                    3 Axis CNC Machine
+                </h5>
+                <p></p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+{% endblock %}
