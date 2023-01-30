@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
         'ESP-06DB9D',
         '79.112.202.204',
         ".herokuapp.com",
+        "37.251.223.55"
     ]
 
 
