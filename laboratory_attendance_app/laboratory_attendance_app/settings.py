@@ -27,9 +27,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
         'laboratory-attendance-app.herokuapp.com',
-        '127.0.0.1',
-        '192.168.134.204',
+        '192.168.0.106',
         'ESP-06DB9D',
+        '79.112.202.204'
     ]
 
 
