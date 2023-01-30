@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
         'laboratory-attendance-app.herokuapp.com',
         '127.0.0.1',
         '192.168.134.204',
+        'ESP-06DB9D',
     ]
 
 
